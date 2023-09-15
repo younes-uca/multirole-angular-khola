@@ -15,7 +15,7 @@ public interface PurchaseAdminService extends  IService<Purchase,PurchaseCriteri
     List<Purchase> findByClientId(Long id);
     int deleteByClientId(Long id);
 
-public List<ScheduleDto> findByMonth(int month);
+     List<ScheduleDto> findByMonth(int month);
 
     HttpEntity<byte[]> createPdf(PurchaseDto dto) throws Exception;
 

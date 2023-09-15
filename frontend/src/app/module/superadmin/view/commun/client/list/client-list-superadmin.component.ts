@@ -20,12 +20,12 @@ export class ClientListSuperadminComponent extends AbstractListController<Client
     clientCategorys: Array<ClientCategoryDto>;
 
 
-constructor( private clientService: ClientService  , private clientCategoryService: ClientCategoryService) {
+    constructor( private clientService: ClientService  , private clientCategoryService: ClientCategoryService) {
         super(clientService);
-        this.pdfName='Client.pdf';
+        this.pdfName = 'Client.pdf';
     }
 
-    ngOnInit() : void {
+    ngOnInit(): void {
       this.findPaginatedByCriteria();
       this.initExport();
       this.initCol();

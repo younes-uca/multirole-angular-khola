@@ -16,6 +16,6 @@ public interface PurchaseDao extends AbstractRepository<Purchase,Long>  {
     int deleteByClientId(Long id);
 
 
-    @Query("SELECT NEW emsi.sir.oubala.zynerator.dto.ScheduleDto(item.id,item.reference ,DATE_FORMAT(item.purchaseStartDate, '%m/%d/%Y %H:%i'),DATE_FORMAT(item.purchaseEndDate, '%m/%d/%Y %H:%i'))  FROM Purchase item WHERE EXTRACT(MONTH from item.purchaseStartDate) = :month")
-    List<ScheduleDto> findByMonth(@Param("month") int month);
+    @Query("SELECT item.id, item.reference, DATE_FORMAT(item.purchaseStartDate, '%m/%d/%Y %H:%i'), DATE_FORMAT(item.purchaseEndDate, '%m/%d/%Y %H:%i') FROM Purchase item WHERE EXTRACT(MONTH from item.purchaseStartDate) = :month")
+    List<Object[]> findByMonth(@Param("month") int month);
 }

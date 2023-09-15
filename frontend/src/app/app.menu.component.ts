@@ -60,18 +60,14 @@ export class AppMenuComponent implements OnInit {
   model: any[];
   modelsuperadmin:any[];
   modelanonymous: any[];
-    modeladmin : any[];
-  modelsuperadmin : any[];
-  constructor(public app: AppComponent,
-   public appMain: AppMainComponent,
-   private roleService: RoleService,
-   private authService:AuthService,
-  private router: Router) {}
+    modelAdmin: any[];
+  modelSuperadmin: any[];
+  constructor(public app: AppComponent, public appMain: AppMainComponent, private roleService: RoleService, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
 
 
-    this.modeladmin =
+    this.modelAdmin =
       [
               {
                 label: 'Product Management',
@@ -112,7 +108,7 @@ export class AppMenuComponent implements OnInit {
                 ]
               },
     ]
-    this.modelsuperadmin =
+    this.modelSuperadmin =
       [
               {
                 label: 'Collaborator',
@@ -132,22 +128,27 @@ export class AppMenuComponent implements OnInit {
               },
     ]
         if (this.authService.authenticated) {
-      if (this.authService.authenticatedUser.roles) {
+          if (this.authService.authenticatedUser.roles) {
 
-        this.authService.authenticatedUser.roles.forEach(role => {
-          const roleName: string = this.getRole(role);
-          this.roleService._role.next(roleName.toUpperCase());
-          eval('this.model = this.model' + this.getRole(role));
-        })
-      }
+            this.authService.authenticatedUser.roles.forEach(role => {
+              const roleName: string = this.getRole(role);
+              this.roleService._role.next(roleName.toUpperCase());
+              eval('this.model = this.model' + this.getRole(role));
+            })
+          }
 
+        }
+  }
+    getRole(text){
+        const [role, ...rest] = text.split('_');
+        return this.upperCaseFirstLetter(rest.join(''));
     }
-  }
-  getRole(text){
-  const [role, ...rest] = text.split('_');
-  return rest.join('').toLowerCase();
-}
-  onMenuClick(event) {
-    this.appMain.onMenuClick(event);
-  }
+
+    upperCaseFirstLetter(word: string) {
+        if (!word) { return word; }
+        return word[0].toUpperCase() + word.substr(1).toLowerCase();
+    }
+    onMenuClick(event) {
+        this.appMain.onMenuClick(event);
+    }
 }

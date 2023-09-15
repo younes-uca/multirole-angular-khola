@@ -173,7 +173,8 @@ public class PurchaseRestAdmin  extends AbstractController<Purchase, PurchaseDto
 
     @GetMapping("month/{month}")
     public List<ScheduleDto> findByMonth(@PathVariable int month) {
-        return service.findByMonth(month);
+        List<ScheduleDto> byMonth = service.findByMonth(month);
+        return byMonth;
     }
 
     public PurchaseRestAdmin (PurchaseAdminService service, PurchaseConverter converter) {

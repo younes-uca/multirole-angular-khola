@@ -116,8 +116,16 @@ public static final List<Attribute> ATTRIBUTES = new ArrayList();
 
 
     public List<ScheduleDto> findByMonth(int month){
-        List<ScheduleDto> results  = dao.findByMonth(month);
-        return results;
+        List<ScheduleDto> res  = new ArrayList<>();
+        List<Object[]> results  = dao.findByMonth(month);
+        for(Object[] result : results){
+            long id = (long) result[0];
+            String subject = (String) result[1];
+            String startTime = (String) result[2];
+            String endTime = (String) result[3];
+            res.add(new ScheduleDto(id,subject,startTime,endTime));
+        }
+        return res;
     }
     public void configure() {
         super.configure(Purchase.class,PurchaseHistory.class, PurchaseHistoryCriteria.class, PurchaseSpecification.class);

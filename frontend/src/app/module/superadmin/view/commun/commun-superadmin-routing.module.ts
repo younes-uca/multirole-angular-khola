@@ -7,7 +7,6 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-import { ProductListSuperadminComponent } from './product/list/product-list-superadmin.component';
 import { ClientListSuperadminComponent } from './client/list/client-list-superadmin.component';
 import { ClientCategoryListSuperadminComponent } from './client-category/list/client-category-list-superadmin.component';
 @NgModule({
@@ -17,20 +16,6 @@ import { ClientCategoryListSuperadminComponent } from './client-category/list/cl
                 {
                     path: '',
                     children: [
-
-
-                        {
-
-                            path: 'product',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: ProductListSuperadminComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
                         {
 
                             path: 'client',

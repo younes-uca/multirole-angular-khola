@@ -47,8 +47,8 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {MenuService} from './app.menu.service';
 
 
-import {SelectButtonModule} from "primeng/selectbutton";
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {ServiceLocator} from './zynerator/service/ServiceLocator';
 

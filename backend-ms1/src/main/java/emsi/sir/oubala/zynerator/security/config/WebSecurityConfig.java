@@ -71,7 +71,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/superadmin/login").permitAll()
                                 .requestMatchers("/api/admin/**").hasAnyAuthority(AuthoritiesConstants.ADMIN)
                                 .requestMatchers("/api/superadmin/**").hasAnyAuthority(AuthoritiesConstants.SUPERADMIN)
-                               .anyRequest().authenticated()
+                               .anyRequest().permitAll()//authenticated()
 
                 );
 
