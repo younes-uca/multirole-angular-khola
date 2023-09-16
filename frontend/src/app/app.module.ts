@@ -22,20 +22,20 @@ import {TabViewModule} from 'primeng/tabview';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 
 import {AppComponent} from './app.component';
-import {AppMainComponent} from './app.main.component';
-import {AppConfigComponent} from './app.config.component';
+import {AppMainComponent} from './config/app.main.component';
+import {AppConfigComponent} from './config/app.config.component';
 
-import {AppMenuComponent} from './app.menu.component';
-import {AppMenuitemComponent} from './app.menuitem.component';
-import {AppRightMenuComponent} from './app.right-menu.component';
-import {AppTopBarComponent} from './app.topbar.component';
-import {AppFooterComponent} from './app.footer.component';
+import {AppMenuComponent} from './menu/app.menu.component';
+import {AppMenuitemComponent} from './menu/app.menuitem.component';
+import {AppRightMenuComponent} from './menu/app.right-menu.component';
+import {AppTopBarComponent} from './menu/app.topbar.component';
+import {AppFooterComponent} from './menu/app.footer.component';
 
 import {AccessDeniedComponent} from './auth/access-denied/access-denied.component';
 import {UserListComponent} from './module/user-list/user-list.component';
 import {UserService} from './zynerator/security/User.service';
 import {RoleService} from './zynerator/security/Role.service';
-import {HomeComponent} from './module/home/home.component';
+import {HomeComponent} from './home/home.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
@@ -44,7 +44,7 @@ import {DialogModule} from 'primeng/dialog';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
 import {FileUploadModule} from 'primeng/fileupload';
-import {MenuService} from './app.menu.service';
+import {MenuService} from './menu/app.menu.service';
 
 
 import {SelectButtonModule} from 'primeng/selectbutton';

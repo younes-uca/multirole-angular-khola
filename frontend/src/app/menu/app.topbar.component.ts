@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import { AppComponent } from './app.component';
-import { AppMainComponent } from './app.main.component';
+import { AppComponent } from '../app.component';
+import { AppMainComponent } from '../config/app.main.component';
 import { User } from 'src/app/zynerator/security/User.model';
 import { AuthService } from 'src/app/zynerator/security/Auth.service';
 

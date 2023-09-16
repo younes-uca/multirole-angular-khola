@@ -16,7 +16,7 @@
     <ul class="topbar-menu">
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
-                <img src="assets/layout/images/avatar.png" alt="roma-layout" />
+                <img src="../../assets/layout/images/avatar.png" alt="roma-layout" />
                 <div class="layout-profile-userinfo">
                     <span class="layout-profile-name">{{authenticatedUser.email}}</span>
                     <span class="layout-profile-name">{{authenticatedUser.prenom}}</span>

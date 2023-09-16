@@ -37,12 +37,12 @@ import { RegisterAdminComponent } from './register-admin/register-admin.componen
                         },
                         {
                             path: 'flos',
-                            loadChildren: () => import('./view/flos/flos-admin-routing.module').then(x=>x.FlosAdminRoutingModule),
+                            loadChildren: () => import('./view/flos/flos-admin-routing.module').then(x => x.FlosAdminRoutingModule),
                             canActivate: [AuthGuard],
                         },
                         {
                             path: 'commun',
-                            loadChildren: () => import('./view/commun/commun-admin-routing.module').then(x=>x.CommunAdminRoutingModule),
+                            loadChildren: () => import('./view/commun/commun-admin-routing.module').then(x => x.CommunAdminRoutingModule),
                             canActivate: [AuthGuard],
                         },
                     ]

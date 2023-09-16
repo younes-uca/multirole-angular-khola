@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {PurchaseService} from 'src/app/controller/service/flos/Purchase.service';
 import {PurchaseDto} from 'src/app/controller/model/flos/Purchase.model';
 import {PurchaseCriteria} from 'src/app/controller/criteria/flos/PurchaseCriteria.model';
@@ -21,7 +21,7 @@ import {ScheduleDto} from 'src/app/zynerator/dto/ScheduleDto.model';
     selector: 'app-purchase-list-admin',
     templateUrl: './purchase-list-admin.component.html'
 })
-export class PurchaseListAdminComponent extends AbstractListController<PurchaseDto, PurchaseCriteria, PurchaseService> implements OnInit {
+export class PurchaseListAdminComponent extends AbstractListController<PurchaseDto, PurchaseCriteria, PurchaseService> implements OnInit, AfterViewInit {
 
     fileName = 'Purchase';
 
@@ -63,14 +63,11 @@ export class PurchaseListAdminComponent extends AbstractListController<PurchaseD
         this.loadClient();
         this.yesOrNoEtat = [{label: 'Etat', value: null}, {label: 'Oui', value: 1}, {label: 'Non', value: 0}];
     }
-
-
-    ngAfterInit() {
-        const calendarApi = this.calendarComponent.getApi();
+    ngAfterViewInit(): void {
         this.currentMonth = new Date().getMonth() + 1;
+        const calendarApi = this.calendarComponent.getApi();
         calendarApi.on('datesSet', (arg) => {
-            const newView = calendarApi.view;
-            this.currentMonth = newView.currentStart.getMonth() + 1;
+            this.currentMonth = arg.view.currentStart.getMonth() + 1;
             this.findScheduleDataByMonth();
         });
     }
@@ -109,6 +106,7 @@ export class PurchaseListAdminComponent extends AbstractListController<PurchaseD
         this.createDialogVisible = false;
         });
     }*/
+
 
 
     handleDateClick(info: any) {

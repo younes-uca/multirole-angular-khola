@@ -8,8 +8,8 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { AppComponent } from './app.component';
-import { AppMainComponent } from './app.main.component';
+import { AppComponent } from '../app.component';
+import { AppMainComponent } from '../config/app.main.component';
 
 import { AuthService } from 'src/app/zynerator/security/Auth.service';
 import { RoleService } from 'src/app/zynerator/security/Role.service';
@@ -72,7 +72,7 @@ export class AppMenuComponent implements OnInit {
               {
                 label: 'Product Management',
                 icon: 'pi pi-wallet',
-                items:[
+                items: [
                     {
                       label: 'Liste product',
                       icon: 'pi pi-fw pi-plus-circle',
@@ -83,7 +83,7 @@ export class AppMenuComponent implements OnInit {
               {
                 label: 'Collaborator',
                 icon: 'pi pi-wallet',
-                items:[
+                items: [
                     {
                       label: 'Liste client',
                       icon: 'pi pi-fw pi-plus-circle',
@@ -99,7 +99,7 @@ export class AppMenuComponent implements OnInit {
               {
                 label: 'Purchase Management',
                 icon: 'pi pi-wallet',
-                items:[
+                items: [
                     {
                       label: 'Liste purchase',
                       icon: 'pi pi-fw pi-plus-circle',
@@ -107,13 +107,13 @@ export class AppMenuComponent implements OnInit {
                     },
                 ]
               },
-    ]
+    ];
     this.modelSuperadmin =
       [
               {
                 label: 'Collaborator',
                 icon: 'pi pi-wallet',
-                items:[
+                items: [
                     {
                       label: 'Liste client',
                       icon: 'pi pi-fw pi-plus-circle',
@@ -126,7 +126,7 @@ export class AppMenuComponent implements OnInit {
                     },
                 ]
               },
-    ]
+    ];
         if (this.authService.authenticated) {
           if (this.authService.authenticatedUser.roles) {
 
