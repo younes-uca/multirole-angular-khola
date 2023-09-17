@@ -3,7 +3,7 @@ import {Component, OnInit, Input} from '@angular/core';
 
 import {AbstractEditController} from 'src/app/zynerator/controller/AbstractEditController';
 
-import {ProductService} from 'src/app/controller/service/commun/Product.service';
+import {ProductAdminService} from 'src/app/controller/service/admin/commun/ProductAdmin.service';
 import {ProductDto} from 'src/app/controller/model/commun/Product.model';
 import {ProductCriteria} from 'src/app/controller/criteria/commun/ProductCriteria.model';
 
@@ -13,7 +13,7 @@ import {ProductCriteria} from 'src/app/controller/criteria/commun/ProductCriteri
   selector: 'app-product-edit-admin',
   templateUrl: './product-edit-admin.component.html'
 })
-export class ProductEditAdminComponent extends AbstractEditController<ProductDto, ProductCriteria, ProductService>   implements OnInit {
+export class ProductEditAdminComponent extends AbstractEditController<ProductDto, ProductCriteria, ProductAdminService>   implements OnInit {
 
 
     private _validProductCode = true;
@@ -22,7 +22,7 @@ export class ProductEditAdminComponent extends AbstractEditController<ProductDto
 
 
 
-    constructor( private productService: ProductService ) {
+    constructor( private productService: ProductAdminService ) {
         super(productService);
     }
 
@@ -30,7 +30,7 @@ export class ProductEditAdminComponent extends AbstractEditController<ProductDto
 }
 
 
-    public setValidation(value : boolean){
+    public setValidation(value: boolean){
         this.validProductCode = value;
         this.validProductReference = value;
         }

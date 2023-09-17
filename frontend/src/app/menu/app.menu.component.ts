@@ -8,11 +8,11 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { AppComponent } from '../app.component';
-import { AppMainComponent } from '../config/app.main.component';
 
+import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/zynerator/security/Auth.service';
 import { RoleService } from 'src/app/zynerator/security/Role.service';
+import {AppMainComponent} from 'src/app/template/app.main.component';
 
 @Component({
   selector: 'app-menu',
@@ -58,53 +58,50 @@ import { RoleService } from 'src/app/zynerator/security/Role.service';
 })
 export class AppMenuComponent implements OnInit {
   model: any[];
-  modelsuperadmin:any[];
   modelanonymous: any[];
     modelAdmin: any[];
   modelSuperadmin: any[];
-  constructor(public app: AppComponent, public appMain: AppMainComponent, private roleService: RoleService, private authService: AuthService, private router: Router) {}
+  constructor(public app: AppComponent, public appMain: AppMainComponent, private roleService: RoleService, private authService:AuthService, private router: Router) {}
 
   ngOnInit() {
-
-
     this.modelAdmin =
       [
               {
                 label: 'Product Management',
                 icon: 'pi pi-wallet',
                 items: [
-                    {
-                      label: 'Liste product',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/admin/commun/product/list']
-                    },
+                          {
+                            label: 'Liste product',
+                            icon: 'pi pi-fw pi-plus-circle',
+                            routerLink: ['/app/admin/commun/product/list']
+                          },
                 ]
               },
               {
                 label: 'Collaborator',
                 icon: 'pi pi-wallet',
                 items: [
-                    {
-                      label: 'Liste client',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/admin/commun/client/list']
-                    },
-                    {
-                      label: 'Liste client category',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/admin/commun/client-category/list']
-                    },
+                          {
+                            label: 'Liste client',
+                            icon: 'pi pi-fw pi-plus-circle',
+                            routerLink: ['/app/admin/commun/client/list']
+                          },
+                          {
+                            label: 'Liste client category',
+                            icon: 'pi pi-fw pi-plus-circle',
+                            routerLink: ['/app/admin/commun/client-category/list']
+                          },
                 ]
               },
               {
                 label: 'Purchase Management',
                 icon: 'pi pi-wallet',
                 items: [
-                    {
-                      label: 'Liste purchase',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/admin/flos/purchase/list']
-                    },
+                          {
+                            label: 'Liste purchase',
+                            icon: 'pi pi-fw pi-plus-circle',
+                            routerLink: ['/app/admin/flos/purchase/list']
+                          },
                 ]
               },
     ];
@@ -114,40 +111,40 @@ export class AppMenuComponent implements OnInit {
                 label: 'Collaborator',
                 icon: 'pi pi-wallet',
                 items: [
-                    {
-                      label: 'Liste client',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/superadmin/commun/client/list']
-                    },
-                    {
-                      label: 'Liste client category',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/superadmin/commun/client-category/list']
-                    },
+                          {
+                            label: 'Liste client',
+                            icon: 'pi pi-fw pi-plus-circle',
+                            routerLink: ['/app/superadmin/commun/client/list']
+                          },
+                          {
+                            label: 'Liste client category',
+                            icon: 'pi pi-fw pi-plus-circle',
+                            routerLink: ['/app/superadmin/commun/client-category/list']
+                          },
                 ]
               },
     ];
         if (this.authService.authenticated) {
-          if (this.authService.authenticatedUser.roles) {
-
-            this.authService.authenticatedUser.roles.forEach(role => {
-              const roleName: string = this.getRole(role);
-              this.roleService._role.next(roleName.toUpperCase());
-              eval('this.model = this.model' + this.getRole(role));
-            })
-          }
-
+            if (this.authService.authenticatedUser.roles) {
+              this.authService.authenticatedUser.roles.forEach(role => {
+                  const roleName: string = this.getRole(role);
+                  this.roleService._role.next(roleName.toUpperCase());
+                  eval('this.model = this.model' + this.getRole(role));
+              })
+            }
         }
   }
+
     getRole(text){
         const [role, ...rest] = text.split('_');
         return this.upperCaseFirstLetter(rest.join(''));
     }
 
     upperCaseFirstLetter(word: string) {
-        if (!word) { return word; }
-        return word[0].toUpperCase() + word.substr(1).toLowerCase();
+      if (!word) { return word; }
+      return word[0].toUpperCase() + word.substr(1).toLowerCase();
     }
+
     onMenuClick(event) {
         this.appMain.onMenuClick(event);
     }

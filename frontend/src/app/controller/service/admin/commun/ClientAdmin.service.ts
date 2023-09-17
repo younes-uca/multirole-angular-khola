@@ -19,7 +19,7 @@ import {ClientCategoryDto} from 'src/app/controller/model/commun/ClientCategory.
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService extends AbstractService<ClientDto, ClientCriteria> {
+export class ClientAdminService extends AbstractService<ClientDto, ClientCriteria> {
      constructor(private http: HttpClient, private roleService: RoleService) {
         super();
         this.setHttp(http);

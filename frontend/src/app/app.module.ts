@@ -22,14 +22,14 @@ import {TabViewModule} from 'primeng/tabview';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 
 import {AppComponent} from './app.component';
-import {AppMainComponent} from './config/app.main.component';
-import {AppConfigComponent} from './config/app.config.component';
 
-import {AppMenuComponent} from './menu/app.menu.component';
-import {AppMenuitemComponent} from './menu/app.menuitem.component';
-import {AppRightMenuComponent} from './menu/app.right-menu.component';
-import {AppTopBarComponent} from './menu/app.topbar.component';
-import {AppFooterComponent} from './menu/app.footer.component';
+import { AppMainComponent } from './template/app.main.component';
+import { AppConfigComponent } from './template/app.config.component';
+
+import { AppTopBarComponent } from './menu/app.topbar.component';
+import { AppRightMenuComponent } from './menu/app.right-menu.component';
+import { AppFooterComponent } from './menu/app.footer.component';
+import { AppMenuComponent } from './menu/app.menu.component';
 
 import {AccessDeniedComponent} from './auth/access-denied/access-denied.component';
 import {UserListComponent} from './module/user-list/user-list.component';
@@ -45,7 +45,7 @@ import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
 import {FileUploadModule} from 'primeng/fileupload';
 import {MenuService} from './menu/app.menu.service';
-
+import {AppMenuitemComponent} from './menu/app.menuitem.component';
 
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';

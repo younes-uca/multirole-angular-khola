@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractViewController} from 'src/app/zynerator/controller/AbstractViewController';
 import { environment } from 'src/environments/environment';
 
-import {ProductService} from 'src/app/controller/service/commun/Product.service';
+import {ProductAdminService} from 'src/app/controller/service/admin/commun/ProductAdmin.service';
 import {ProductDto} from 'src/app/controller/model/commun/Product.model';
 import {ProductCriteria} from 'src/app/controller/criteria/commun/ProductCriteria.model';
 
@@ -12,10 +12,10 @@ import {ProductCriteria} from 'src/app/controller/criteria/commun/ProductCriteri
   selector: 'app-product-view-admin',
   templateUrl: './product-view-admin.component.html'
 })
-export class ProductViewAdminComponent extends AbstractViewController<ProductDto, ProductCriteria, ProductService> implements OnInit {
+export class ProductViewAdminComponent extends AbstractViewController<ProductDto, ProductCriteria, ProductAdminService> implements OnInit {
 
 
-    constructor(private productService: ProductService){
+    constructor(private productService: ProductAdminService){
         super(productService);
     }
 

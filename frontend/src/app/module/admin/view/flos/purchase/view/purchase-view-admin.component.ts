@@ -4,26 +4,26 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractViewController} from 'src/app/zynerator/controller/AbstractViewController';
 import { environment } from 'src/environments/environment';
 
-import {PurchaseService} from 'src/app/controller/service/flos/Purchase.service';
+import {PurchaseAdminService} from 'src/app/controller/service/admin/flos/PurchaseAdmin.service';
 import {PurchaseDto} from 'src/app/controller/model/flos/Purchase.model';
 import {PurchaseCriteria} from 'src/app/controller/criteria/flos/PurchaseCriteria.model';
 
 import {ClientDto} from 'src/app/controller/model/commun/Client.model';
-import {ClientService} from 'src/app/controller/service/commun/Client.service';
+import {ClientAdminService} from 'src/app/controller/service/admin/commun/ClientAdmin.service';
 import {PurchaseItemDto} from 'src/app/controller/model/flos/PurchaseItem.model';
-import {PurchaseItemService} from 'src/app/controller/service/flos/PurchaseItem.service';
+import {PurchaseItemAdminService} from 'src/app/controller/service/admin/flos/PurchaseItemAdmin.service';
 import {ProductDto} from 'src/app/controller/model/commun/Product.model';
-import {ProductService} from 'src/app/controller/service/commun/Product.service';
+import {ProductAdminService} from 'src/app/controller/service/admin/commun/ProductAdmin.service';
 @Component({
   selector: 'app-purchase-view-admin',
   templateUrl: './purchase-view-admin.component.html'
 })
-export class PurchaseViewAdminComponent extends AbstractViewController<PurchaseDto, PurchaseCriteria, PurchaseService> implements OnInit {
+export class PurchaseViewAdminComponent extends AbstractViewController<PurchaseDto, PurchaseCriteria, PurchaseAdminService> implements OnInit {
 
     purchaseItems = new PurchaseItemDto();
     purchaseItemss: Array<PurchaseItemDto> = [];
 
-    constructor(private purchaseService: PurchaseService, private clientService: ClientService, private purchaseItemService: PurchaseItemService, private productService: ProductService){
+    constructor(private purchaseService: PurchaseAdminService, private clientService: ClientAdminService, private purchaseItemService: PurchaseItemAdminService, private productService: ProductAdminService){
         super(purchaseService);
     }
 
@@ -41,7 +41,7 @@ export class PurchaseViewAdminComponent extends AbstractViewController<PurchaseD
     set product(value: ProductDto) {
         this.productService.item = value;
     }
-    get products():Array<ProductDto> {
+    get products(): Array<ProductDto> {
        return this.productService.items;
     }
     set products(value: Array<ProductDto>) {
@@ -53,7 +53,7 @@ export class PurchaseViewAdminComponent extends AbstractViewController<PurchaseD
     set client(value: ClientDto) {
         this.clientService.item = value;
     }
-    get clients():Array<ClientDto> {
+    get clients(): Array<ClientDto> {
        return this.clientService.items;
     }
     set clients(value: Array<ClientDto>) {

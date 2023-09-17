@@ -9,28 +9,28 @@ import {environment} from 'src/environments/environment';
 import {PaginatedList} from 'src/app/zynerator/dto/PaginatedList.model';
 import {BaseDto} from 'src/app/zynerator/dto/BaseDto.model';
 
-import {PurchaseDto} from 'src/app/controller/model/flos/Purchase.model';
-import {PurchaseCriteria} from 'src/app/controller/criteria/flos/PurchaseCriteria.model';
+import {ClientDto} from 'src/app/controller/model/commun/Client.model';
+import {ClientCriteria} from 'src/app/controller/criteria/commun/ClientCriteria.model';
 import {AbstractService} from 'src/app/zynerator/service/AbstractService';
 
-import {ClientCriteria} from 'src/app/controller/criteria/commun/ClientCriteria.model';
-import {ClientDto} from 'src/app/controller/model/commun/Client.model';
+import {ClientCategoryCriteria} from 'src/app/controller/criteria/commun/ClientCategoryCriteria.model';
+import {ClientCategoryDto} from 'src/app/controller/model/commun/ClientCategory.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PurchaseService extends AbstractService<PurchaseDto, PurchaseCriteria> {
+export class ClientSuperadminService extends AbstractService<ClientDto, ClientCriteria> {
      constructor(private http: HttpClient, private roleService: RoleService) {
         super();
         this.setHttp(http);
-        this.setApi(environment.apiUrl + 'admin/purchase/');
+        this.setApi(environment.apiUrl + 'superadmin/client/');
     }
 
-    public constrcutDto(): PurchaseDto {
-        return new PurchaseDto();
+    public constrcutDto(): ClientDto {
+        return new ClientDto();
     }
 
-    public constrcutCriteria(): PurchaseCriteria {
-        return new PurchaseCriteria();
+    public constrcutCriteria(): ClientCriteria {
+        return new ClientCriteria();
     }
 }

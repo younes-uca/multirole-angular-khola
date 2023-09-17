@@ -4,20 +4,20 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractViewController} from 'src/app/zynerator/controller/AbstractViewController';
 import { environment } from 'src/environments/environment';
 
-import {ClientService} from 'src/app/controller/service/commun/Client.service';
+import {ClientSuperadminService} from 'src/app/controller/service/superadmin/commun/ClientSuperadmin.service';
 import {ClientDto} from 'src/app/controller/model/commun/Client.model';
 import {ClientCriteria} from 'src/app/controller/criteria/commun/ClientCriteria.model';
 
 import {ClientCategoryDto} from 'src/app/controller/model/commun/ClientCategory.model';
-import {ClientCategoryService} from 'src/app/controller/service/commun/ClientCategory.service';
+import {ClientCategorySuperadminService} from 'src/app/controller/service/superadmin/commun/ClientCategorySuperadmin.service';
 @Component({
   selector: 'app-client-view-superadmin',
   templateUrl: './client-view-superadmin.component.html'
 })
-export class ClientViewSuperadminComponent extends AbstractViewController<ClientDto, ClientCriteria, ClientService> implements OnInit {
+export class ClientViewSuperadminComponent extends AbstractViewController<ClientDto, ClientCriteria, ClientSuperadminService> implements OnInit {
 
 
-    constructor(private clientService: ClientService, private clientCategoryService: ClientCategoryService){
+    constructor(private clientService: ClientSuperadminService, private clientCategoryService: ClientCategorySuperadminService){
         super(clientService);
     }
 
@@ -33,7 +33,7 @@ export class ClientViewSuperadminComponent extends AbstractViewController<Client
     set clientCategory(value: ClientCategoryDto) {
         this.clientCategoryService.item = value;
     }
-    get clientCategorys():Array<ClientCategoryDto> {
+    get clientCategorys(): Array<ClientCategoryDto> {
        return this.clientCategoryService.items;
     }
     set clientCategorys(value: Array<ClientCategoryDto>) {

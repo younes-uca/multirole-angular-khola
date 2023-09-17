@@ -9,26 +9,26 @@ import {environment} from 'src/environments/environment';
 import {PaginatedList} from 'src/app/zynerator/dto/PaginatedList.model';
 import {BaseDto} from 'src/app/zynerator/dto/BaseDto.model';
 
-import {ClientCategoryDto} from 'src/app/controller/model/commun/ClientCategory.model';
-import {ClientCategoryCriteria} from 'src/app/controller/criteria/commun/ClientCategoryCriteria.model';
+import {ProductDto} from 'src/app/controller/model/commun/Product.model';
+import {ProductCriteria} from 'src/app/controller/criteria/commun/ProductCriteria.model';
 import {AbstractService} from 'src/app/zynerator/service/AbstractService';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientCategoryService extends AbstractService<ClientCategoryDto, ClientCategoryCriteria> {
+export class ProductAdminService extends AbstractService<ProductDto, ProductCriteria> {
      constructor(private http: HttpClient, private roleService: RoleService) {
         super();
         this.setHttp(http);
-        this.setApi(environment.apiUrl + 'admin/clientCategory/');
+        this.setApi(environment.apiUrl + 'admin/product/');
     }
 
-    public constrcutDto(): ClientCategoryDto {
-        return new ClientCategoryDto();
+    public constrcutDto(): ProductDto {
+        return new ProductDto();
     }
 
-    public constrcutCriteria(): ClientCategoryCriteria {
-        return new ClientCategoryCriteria();
+    public constrcutCriteria(): ProductCriteria {
+        return new ProductCriteria();
     }
 }

@@ -2,21 +2,21 @@ import {Component, OnInit, Input} from '@angular/core';
 
 import { AbstractCreateController } from 'src/app/zynerator/controller/AbstractCreateController';
 
-import {ProductService} from 'src/app/controller/service/commun/Product.service';
+import {ProductAdminService} from 'src/app/controller/service/admin/commun/ProductAdmin.service';
 import {ProductDto} from 'src/app/controller/model/commun/Product.model';
 import {ProductCriteria} from 'src/app/controller/criteria/commun/ProductCriteria.model';
 @Component({
   selector: 'app-product-create-admin',
   templateUrl: './product-create-admin.component.html'
 })
-export class ProductCreateAdminComponent extends AbstractCreateController<ProductDto, ProductCriteria, ProductService>  implements OnInit {
+export class ProductCreateAdminComponent extends AbstractCreateController<ProductDto, ProductCriteria, ProductAdminService>  implements OnInit {
 
 
 
    private _validProductCode = true;
    private _validProductReference = true;
 
-    constructor( private productService: ProductService ) {
+    constructor( private productService: ProductAdminService ) {
         super(productService);
     }
 

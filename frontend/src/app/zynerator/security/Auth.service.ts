@@ -1,16 +1,16 @@
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {environment} from 'src/environments/environment';
 
-import {BehaviorSubject} from 'rxjs';
-import {Role} from './Role.model';
-import {User} from './User.model';
-import {TokenService} from './Token.service';
+import { BehaviorSubject } from 'rxjs';
+import { Role } from './Role.model';
+import { User } from './User.model';
+import { TokenService } from './Token.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthService {
     readonly API = environment.loginUrl;
@@ -22,11 +22,10 @@ export class AuthService {
     public error: string = null;
 
 
-    constructor(private http: HttpClient, private tokenService: TokenService, private router: Router) {
-    }
+    constructor(private http: HttpClient, private tokenService: TokenService, private router: Router) { }
 
-    public loginAdmin(username: string, password: string) {
-        this.http.post<any>(this.API + 'login', {username, password}, {observe: 'response'}).subscribe(
+        public loginAdmin(username: string, password: string) {
+       this.http.post<any>(this.API + 'login', { username, password }, { observe: 'response' }).subscribe(
             resp => {
                 this.error = null;
                 const jwt = resp.headers.get('Authorization');
@@ -40,9 +39,8 @@ export class AuthService {
             }
         );
     }
-
     public loginSuperadmin(username: string, password: string) {
-        this.http.post<any>(this.API + 'login', {username, password}, {observe: 'response'}).subscribe(
+       this.http.post<any>(this.API + 'login', { username, password }, { observe: 'response' }).subscribe(
             resp => {
                 this.error = null;
                 const jwt = resp.headers.get('Authorization');
@@ -77,31 +75,29 @@ export class AuthService {
 
     }
 
+
     public hasRole(role: Role): boolean {
         const index = this._authenticatedUser.roles.findIndex(r => r.authority === role.authority);
-        return index > -1 ? true : false;
+        return  index > -1 ? true : false;
     }
 
     public registerAdmin() {
-        console.log(this.user);
         this.http.post<any>(this.API + 'api/users/save', this.user, {observe: 'response'}).subscribe(
             resp => {
-                this.router.navigate(['admin/login']);
-            }, (error: HttpErrorResponse) => {
-                console.log(error.error);
-            }
-        );
+                    this.router.navigate(['admin/admin']);
+                }, (error: HttpErrorResponse) => {
+                    console.log(error.error);
+                }
+            );
     }
-
     public registerSuperadmin() {
-        console.log(this.user);
         this.http.post<any>(this.API + 'api/users/save', this.user, {observe: 'response'}).subscribe(
             resp => {
-                this.router.navigate(['superadmin/login']);
-            }, (error: HttpErrorResponse) => {
-                console.log(error.error);
-            }
-        );
+                    this.router.navigate(['admin/superadmin']);
+                }, (error: HttpErrorResponse) => {
+                    console.log(error.error);
+                }
+            );
     }
 
     public logout() {
@@ -112,15 +108,13 @@ export class AuthService {
         this._authenticatedUser = new User();
         this.router.navigate(['']);
     }
-
-    get user(): User {
+     get user(): User {
         return this._user;
     }
 
     set user(value: User) {
         this._user = value;
     }
-
     get authenticated(): boolean {
         return this._authenticated;
     }
@@ -128,8 +122,7 @@ export class AuthService {
     set authenticated(value: boolean) {
         this._authenticated = value;
     }
-
-    get authenticatedUser(): User {
+        get authenticatedUser(): User {
         return this._authenticatedUser;
     }
 

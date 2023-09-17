@@ -3,8 +3,8 @@ import {NavigationEnd, Router} from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
-import {MenuService} from './app.menu.service';
-import {AppMainComponent} from '../config/app.main.component';
+import {MenuService} from 'src/app/menu/app.menu.service';
+import {AppMainComponent} from 'src/app/template/app.main.component';
 
 @Component({
     /* tslint:disable:component-selector */

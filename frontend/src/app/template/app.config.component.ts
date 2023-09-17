@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { AppComponent } from '../app.component';
-import { AppMainComponent } from './app.main.component';
+import { AppComponent } from 'src/app/app.component';
+import { AppMainComponent } from 'src/app/template/app.main.component';
 
 @Component({
     selector: 'app-config',

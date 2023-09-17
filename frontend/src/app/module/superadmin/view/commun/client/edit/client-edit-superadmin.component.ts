@@ -3,19 +3,19 @@ import {Component, OnInit, Input} from '@angular/core';
 
 import {AbstractEditController} from 'src/app/zynerator/controller/AbstractEditController';
 
-import {ClientService} from 'src/app/controller/service/commun/Client.service';
+import {ClientSuperadminService} from 'src/app/controller/service/superadmin/commun/ClientSuperadmin.service';
 import {ClientDto} from 'src/app/controller/model/commun/Client.model';
 import {ClientCriteria} from 'src/app/controller/criteria/commun/ClientCriteria.model';
 
 
 import {ClientCategoryDto} from 'src/app/controller/model/commun/ClientCategory.model';
-import {ClientCategoryService} from 'src/app/controller/service/commun/ClientCategory.service';
+import {ClientCategorySuperadminService} from 'src/app/controller/service/superadmin/commun/ClientCategorySuperadmin.service';
 
 @Component({
   selector: 'app-client-edit-superadmin',
   templateUrl: './client-edit-superadmin.component.html'
 })
-export class ClientEditSuperadminComponent extends AbstractEditController<ClientDto, ClientCriteria, ClientService>   implements OnInit {
+export class ClientEditSuperadminComponent extends AbstractEditController<ClientDto, ClientCriteria, ClientSuperadminService>   implements OnInit {
 
 
     private _validClientFullName = true;
@@ -25,7 +25,7 @@ export class ClientEditSuperadminComponent extends AbstractEditController<Client
 
 
 
-    constructor( private clientService: ClientService , private clientCategoryService: ClientCategoryService) {
+    constructor( private clientService: ClientSuperadminService , private clientCategoryService: ClientCategorySuperadminService) {
         super(clientService);
     }
 
@@ -35,7 +35,7 @@ export class ClientEditSuperadminComponent extends AbstractEditController<Client
 }
 
 
-    public setValidation(value : boolean){
+    public setValidation(value: boolean){
         this.validClientFullName = value;
         }
     public validateForm(): void{
@@ -55,10 +55,10 @@ export class ClientEditSuperadminComponent extends AbstractEditController<Client
 
    public async openCreateClientCategory(clientCategory: string) {
         const isPermistted = await this.roleService.isPermitted('ClientCategory', 'edit');
-        if(isPermistted) {
+        if (isPermistted) {
              this.clientCategory = new ClientCategoryDto();
              this.createClientCategoryDialog = true;
-        }else{
+        }else {
              this.messageService.add({
                 severity: 'error', summary: 'erreur', detail: 'problème de permission'
             });

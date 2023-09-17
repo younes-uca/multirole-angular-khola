@@ -2,21 +2,21 @@ import {Component, OnInit, Input} from '@angular/core';
 
 import { AbstractCreateController } from 'src/app/zynerator/controller/AbstractCreateController';
 
-import {ClientCategoryService} from 'src/app/controller/service/commun/ClientCategory.service';
+import {ClientCategoryAdminService} from 'src/app/controller/service/admin/commun/ClientCategoryAdmin.service';
 import {ClientCategoryDto} from 'src/app/controller/model/commun/ClientCategory.model';
 import {ClientCategoryCriteria} from 'src/app/controller/criteria/commun/ClientCategoryCriteria.model';
 @Component({
   selector: 'app-client-category-create-admin',
   templateUrl: './client-category-create-admin.component.html'
 })
-export class ClientCategoryCreateAdminComponent extends AbstractCreateController<ClientCategoryDto, ClientCategoryCriteria, ClientCategoryService>  implements OnInit {
+export class ClientCategoryCreateAdminComponent extends AbstractCreateController<ClientCategoryDto, ClientCategoryCriteria, ClientCategoryAdminService>  implements OnInit {
 
 
 
    private _validClientCategoryReference = true;
    private _validClientCategoryCode = true;
 
-    constructor( private clientCategoryService: ClientCategoryService ) {
+    constructor( private clientCategoryService: ClientCategoryAdminService ) {
         super(clientCategoryService);
     }
 

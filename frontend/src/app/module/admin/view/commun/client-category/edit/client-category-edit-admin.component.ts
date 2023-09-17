@@ -3,7 +3,7 @@ import {Component, OnInit, Input} from '@angular/core';
 
 import {AbstractEditController} from 'src/app/zynerator/controller/AbstractEditController';
 
-import {ClientCategoryService} from 'src/app/controller/service/commun/ClientCategory.service';
+import {ClientCategoryAdminService} from 'src/app/controller/service/admin/commun/ClientCategoryAdmin.service';
 import {ClientCategoryDto} from 'src/app/controller/model/commun/ClientCategory.model';
 import {ClientCategoryCriteria} from 'src/app/controller/criteria/commun/ClientCategoryCriteria.model';
 
@@ -13,7 +13,7 @@ import {ClientCategoryCriteria} from 'src/app/controller/criteria/commun/ClientC
   selector: 'app-client-category-edit-admin',
   templateUrl: './client-category-edit-admin.component.html'
 })
-export class ClientCategoryEditAdminComponent extends AbstractEditController<ClientCategoryDto, ClientCategoryCriteria, ClientCategoryService>   implements OnInit {
+export class ClientCategoryEditAdminComponent extends AbstractEditController<ClientCategoryDto, ClientCategoryCriteria, ClientCategoryAdminService>   implements OnInit {
 
 
     private _validClientCategoryReference = true;
@@ -22,7 +22,7 @@ export class ClientCategoryEditAdminComponent extends AbstractEditController<Cli
 
 
 
-    constructor( private clientCategoryService: ClientCategoryService ) {
+    constructor( private clientCategoryService: ClientCategoryAdminService ) {
         super(clientCategoryService);
     }
 
@@ -30,7 +30,7 @@ export class ClientCategoryEditAdminComponent extends AbstractEditController<Cli
 }
 
 
-    public setValidation(value : boolean){
+    public setValidation(value: boolean){
         this.validClientCategoryReference = value;
         this.validClientCategoryCode = value;
         }

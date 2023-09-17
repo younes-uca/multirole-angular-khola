@@ -3,19 +3,19 @@ import {Component, OnInit, Input} from '@angular/core';
 
 import {AbstractEditController} from 'src/app/zynerator/controller/AbstractEditController';
 
-import {ClientService} from 'src/app/controller/service/commun/Client.service';
+import {ClientAdminService} from 'src/app/controller/service/admin/commun/ClientAdmin.service';
 import {ClientDto} from 'src/app/controller/model/commun/Client.model';
 import {ClientCriteria} from 'src/app/controller/criteria/commun/ClientCriteria.model';
 
 
 import {ClientCategoryDto} from 'src/app/controller/model/commun/ClientCategory.model';
-import {ClientCategoryService} from 'src/app/controller/service/commun/ClientCategory.service';
+import {ClientCategoryAdminService} from 'src/app/controller/service/admin/commun/ClientCategoryAdmin.service';
 
 @Component({
   selector: 'app-client-edit-admin',
   templateUrl: './client-edit-admin.component.html'
 })
-export class ClientEditAdminComponent extends AbstractEditController<ClientDto, ClientCriteria, ClientService>   implements OnInit {
+export class ClientEditAdminComponent extends AbstractEditController<ClientDto, ClientCriteria, ClientAdminService>   implements OnInit {
 
 
     private _validClientFullName = true;
@@ -25,7 +25,7 @@ export class ClientEditAdminComponent extends AbstractEditController<ClientDto, 
 
 
 
-    constructor( private clientService: ClientService , private clientCategoryService: ClientCategoryService) {
+    constructor( private clientService: ClientAdminService , private clientCategoryService: ClientCategoryAdminService) {
         super(clientService);
     }
 
@@ -35,7 +35,7 @@ export class ClientEditAdminComponent extends AbstractEditController<ClientDto, 
 }
 
 
-    public setValidation(value : boolean){
+    public setValidation(value: boolean){
         this.validClientFullName = value;
         }
     public validateForm(): void{
@@ -55,10 +55,10 @@ export class ClientEditAdminComponent extends AbstractEditController<ClientDto, 
 
    public async openCreateClientCategory(clientCategory: string) {
         const isPermistted = await this.roleService.isPermitted('ClientCategory', 'edit');
-        if(isPermistted) {
+        if (isPermistted) {
              this.clientCategory = new ClientCategoryDto();
              this.createClientCategoryDialog = true;
-        }else{
+        }else {
              this.messageService.add({
                 severity: 'error', summary: 'erreur', detail: 'problème de permission'
             });

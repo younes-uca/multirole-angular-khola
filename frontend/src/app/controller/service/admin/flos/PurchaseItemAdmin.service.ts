@@ -21,7 +21,7 @@ import {ProductDto} from 'src/app/controller/model/commun/Product.model';
 @Injectable({
   providedIn: 'root'
 })
-export class PurchaseItemService extends AbstractService<PurchaseItemDto, PurchaseItemCriteria> {
+export class PurchaseItemAdminService extends AbstractService<PurchaseItemDto, PurchaseItemCriteria> {
      constructor(private http: HttpClient, private roleService: RoleService) {
         super();
         this.setHttp(http);

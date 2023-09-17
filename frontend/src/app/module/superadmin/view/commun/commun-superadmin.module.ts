@@ -45,7 +45,6 @@ import {PaginatorModule} from 'primeng/paginator';
 @NgModule({
   declarations: [
 
-
     ClientCreateSuperadminComponent,
     ClientListSuperadminComponent,
     ClientViewSuperadminComponent,
@@ -88,7 +87,6 @@ import {PaginatorModule} from 'primeng/paginator';
 
   ],
   exports: [
-
   ClientCreateSuperadminComponent,
   ClientListSuperadminComponent,
   ClientViewSuperadminComponent,

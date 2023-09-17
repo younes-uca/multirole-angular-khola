@@ -2,20 +2,20 @@ import {Component, OnInit, Input} from '@angular/core';
 
 import { AbstractCreateController } from 'src/app/zynerator/controller/AbstractCreateController';
 
-import {PurchaseService} from 'src/app/controller/service/flos/Purchase.service';
+import {PurchaseAdminService} from 'src/app/controller/service/admin/flos/PurchaseAdmin.service';
 import {PurchaseDto} from 'src/app/controller/model/flos/Purchase.model';
 import {PurchaseCriteria} from 'src/app/controller/criteria/flos/PurchaseCriteria.model';
 import {ClientDto} from 'src/app/controller/model/commun/Client.model';
-import {ClientService} from 'src/app/controller/service/commun/Client.service';
+import {ClientAdminService} from 'src/app/controller/service/admin/commun/ClientAdmin.service';
 import {PurchaseItemDto} from 'src/app/controller/model/flos/PurchaseItem.model';
-import {PurchaseItemService} from 'src/app/controller/service/flos/PurchaseItem.service';
+import {PurchaseItemAdminService} from 'src/app/controller/service/admin/flos/PurchaseItemAdmin.service';
 import {ProductDto} from 'src/app/controller/model/commun/Product.model';
-import {ProductService} from 'src/app/controller/service/commun/Product.service';
+import {ProductAdminService} from 'src/app/controller/service/admin/commun/ProductAdmin.service';
 @Component({
   selector: 'app-purchase-create-admin',
   templateUrl: './purchase-create-admin.component.html'
 })
-export class PurchaseCreateAdminComponent extends AbstractCreateController<PurchaseDto, PurchaseCriteria, PurchaseService>  implements OnInit {
+export class PurchaseCreateAdminComponent extends AbstractCreateController<PurchaseDto, PurchaseCriteria, PurchaseAdminService>  implements OnInit {
 
     private _purchaseItemsElement = new PurchaseItemDto();
 
@@ -26,7 +26,7 @@ export class PurchaseCreateAdminComponent extends AbstractCreateController<Purch
     private _validPurchaseItemsPrice = true;
     private _validPurchaseItemsQuantity = true;
 
-    constructor( private purchaseService: PurchaseService , private clientService: ClientService, private purchaseItemService: PurchaseItemService, private productService: ProductService) {
+    constructor( private purchaseService: PurchaseAdminService , private clientService: ClientAdminService, private purchaseItemService: PurchaseItemAdminService, private productService: ProductAdminService) {
         super(purchaseService);
     }
 
